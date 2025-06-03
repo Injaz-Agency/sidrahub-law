@@ -13,6 +13,7 @@ class CompanyPolicy
      */
     public function viewAny(User $user): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // All authenticated users can view companies list
         return true;
     }
@@ -22,9 +23,10 @@ class CompanyPolicy
      */
     public function view(User $user, Company $company): bool
     {
+        return isset($user->role) && in_array($user->role->name, haystack: ['super_admin', 'admin', 'moderator']);
         // Users can view companies they own, their company employees can view their company,
         // admins and managers can view all
-        return $this->canAccessCompany($user, $company);
+        // return $this->canAccessCompany($user, $company);
     }
 
     /**
@@ -32,8 +34,7 @@ class CompanyPolicy
      */
     public function create(User $user): bool
     {
-        // All authenticated users can create companies
-        return true;
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -41,8 +42,9 @@ class CompanyPolicy
      */
     public function update(User $user, Company $company): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Company owners and admins can update companies
-        return $user->id === $company->user_id || $this->isAdminOrManager($user);
+        // return $user->id === $company->user_id || $this->isAdminOrManager($user);
     }
 
     /**
@@ -50,12 +52,13 @@ class CompanyPolicy
      */
     public function delete(User $user, Company $company): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Company owners and admins can delete companies
         // Cannot delete if company has employees
-        $hasEmployees = $company->professionals()->count() > 0;
+        // $hasEmployees = $company->professionals()->count() > 0;
 
-        return !$hasEmployees &&
-            ($user->id === $company->user_id || $this->isAdmin($user));
+        // return !$hasEmployees &&
+        //     ($user->id === $company->user_id || $this->isAdmin($user));
     }
 
     /**
@@ -63,8 +66,9 @@ class CompanyPolicy
      */
     public function restore(User $user, Company $company): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Company owners and admins can restore companies
-        return $user->id === $company->user_id || $this->isAdminOrManager($user);
+        // return $user->id === $company->user_id || $this->isAdminOrManager($user);
     }
 
     /**
@@ -72,8 +76,9 @@ class CompanyPolicy
      */
     public function forceDelete(User $user, Company $company): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin']);
         // Only super admin can force delete
-        return $this->isSuperAdmin($user);
+        // return $this->isSuperAdmin($user);
     }
 
     /**

@@ -12,8 +12,7 @@ class UserPolicy
      */
     public function viewAny(User $user): bool
     {
-        // Admins and managers can view all users
-        return $this->isAdminOrManager($user);
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -21,8 +20,9 @@ class UserPolicy
      */
     public function view(User $user, User $model): bool
     {
+        return isset($user->role) && in_array($user->role->name, haystack: ['super_admin', 'admin', 'moderator']);
         // Users can view their own profile, admins and managers can view all
-        return $user->id === $model->id || $this->isAdminOrManager($user);
+        // return $user->id === $model->id || $this->isAdminOrManager($user);
     }
 
     /**
@@ -30,8 +30,7 @@ class UserPolicy
      */
     public function create(User $user): bool
     {
-        // Only admins and managers can create new users
-        return $this->isAdminOrManager($user);
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -39,21 +38,7 @@ class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
-        // Users can update their own profile, admins can update all users
-        // Managers can update users but not other admins
-        if ($user->id === $model->id) {
-            return true;
-        }
-
-        if ($this->isAdmin($user)) {
-            return true;
-        }
-
-        if ($this->isManager($user) && !$this->isAdmin($model)) {
-            return true;
-        }
-
-        return false;
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -61,14 +46,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model): bool
     {
-        // Users cannot delete themselves
-        // Only admins can delete users
-        // Admins cannot delete other admins
-        if ($user->id === $model->id) {
-            return false;
-        }
-
-        return $this->isAdmin($user) && !$this->isAdmin($model);
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -76,7 +54,7 @@ class UserPolicy
      */
     public function restore(User $user, User $model): bool
     {
-        return $this->isAdmin($user);
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -84,8 +62,7 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model): bool
     {
-        // Only super admin can force delete
-        return $this->isSuperAdmin($user);
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin']);
     }
 
     /**

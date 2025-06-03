@@ -13,8 +13,9 @@ class RolePolicy
      */
     public function viewAny(User $user): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin']);
         // Only admins and super admins can view roles
-        return $this->isAdmin($user) || $this->isSuperAdmin($user);
+        // return $this->isAdmin($user) || $this->isSuperAdmin($user);
     }
 
     /**
@@ -22,8 +23,9 @@ class RolePolicy
      */
     public function view(User $user, Role $role): bool
     {
+        return isset($user->role) && in_array($user->role->name, haystack: ['super_admin', 'admin']);
         // Only admins and super admins can view roles
-        return $this->isAdmin($user) || $this->isSuperAdmin($user);
+        // return $this->isAdmin($user) || $this->isSuperAdmin($user);
     }
 
     /**
@@ -31,8 +33,9 @@ class RolePolicy
      */
     public function create(User $user): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin']);
         // Only super admins can create new roles
-        return $this->isSuperAdmin($user);
+        // return $this->isSuperAdmin($user);
     }
 
     /**
@@ -40,8 +43,9 @@ class RolePolicy
      */
     public function update(User $user, Role $role): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin']);
         // Only super admins can update roles
-        return $this->isSuperAdmin($user);
+        // return $this->isSuperAdmin($user);
     }
 
     /**
@@ -49,9 +53,10 @@ class RolePolicy
      */
     public function delete(User $user, Role $role): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin']);
         // Only super admins can delete roles
         // Cannot delete if role has users assigned
-        return $this->isSuperAdmin($user) && $role->users()->count() === 0;
+        // return $this->isSuperAdmin($user) && $role->users()->count() === 0;
     }
 
     /**
@@ -59,7 +64,8 @@ class RolePolicy
      */
     public function restore(User $user, Role $role): bool
     {
-        return $this->isSuperAdmin($user);
+        return isset($user->role) && in_array($user->role->name, ['super_admin']);
+        // return $this->isSuperAdmin($user);
     }
 
     /**
@@ -67,8 +73,9 @@ class RolePolicy
      */
     public function forceDelete(User $user, Role $role): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin']);
         // Only super admin can force delete
-        return $this->isSuperAdmin($user) && $role->users()->count() === 0;
+        // return $this->isSuperAdmin($user) && $role->users()->count() === 0;
     }
 
     /**

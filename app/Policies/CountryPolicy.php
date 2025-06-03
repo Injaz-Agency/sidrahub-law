@@ -13,8 +13,7 @@ class CountryPolicy
      */
     public function viewAny(User $user): bool
     {
-        // All authenticated users can view countries (for dropdowns, etc.)
-        return true;
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -22,8 +21,7 @@ class CountryPolicy
      */
     public function view(User $user, Country $country): bool
     {
-        // All authenticated users can view individual countries
-        return true;
+        return isset($user->role) && in_array($user->role->name, haystack: ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -31,8 +29,9 @@ class CountryPolicy
      */
     public function create(User $user): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Only admins and super admins can create countries
-        return $this->isAdmin($user) || $this->isSuperAdmin($user);
+        // return $this->isAdmin($user) || $this->isSuperAdmin($user);
     }
 
     /**
@@ -40,8 +39,9 @@ class CountryPolicy
      */
     public function update(User $user, Country $country): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Only admins and super admins can update countries
-        return $this->isAdmin($user) || $this->isSuperAdmin($user);
+        // return $this->isAdmin($user) || $this->isSuperAdmin($user);
     }
 
     /**
@@ -49,12 +49,13 @@ class CountryPolicy
      */
     public function delete(User $user, Country $country): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Only super admins can delete countries
         // Cannot delete if country has related records
-        return $this->isSuperAdmin($user) &&
-            $country->companies()->count() === 0 &&
-            $country->professionals()->count() === 0 &&
-            $country->services()->count() === 0;
+        // return $this->isSuperAdmin($user) &&
+        //     $country->companies()->count() === 0 &&
+        //     $country->professionals()->count() === 0 &&
+        //     $country->services()->count() === 0;
     }
 
     /**
@@ -62,7 +63,8 @@ class CountryPolicy
      */
     public function restore(User $user, Country $country): bool
     {
-        return $this->isAdmin($user) || $this->isSuperAdmin($user);
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
+        // return $this->isAdmin($user) || $this->isSuperAdmin($user);
     }
 
     /**
@@ -70,11 +72,12 @@ class CountryPolicy
      */
     public function forceDelete(User $user, Country $country): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin']);
         // Only super admin can force delete
-        return $this->isSuperAdmin($user) &&
-            $country->companies()->count() === 0 &&
-            $country->professionals()->count() === 0 &&
-            $country->services()->count() === 0;
+        // return $this->isSuperAdmin($user) &&
+        //     $country->companies()->count() === 0 &&
+        //     $country->professionals()->count() === 0 &&
+        //     $country->services()->count() === 0;
     }
 
     /**

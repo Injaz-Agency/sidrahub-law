@@ -13,8 +13,7 @@ class ServicePolicy
      */
     public function viewAny(User $user): bool
     {
-        // All authenticated users can view services list
-        return true;
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -22,8 +21,7 @@ class ServicePolicy
      */
     public function view(User $user, Service $service): bool
     {
-        // All authenticated users can view individual services
-        return true;
+        return isset($user->role) && in_array($user->role->name, haystack: ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -31,8 +29,9 @@ class ServicePolicy
      */
     public function create(User $user): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Admins, managers, and company owners can create services
-        return $this->isAdminOrManager($user) || $this->hasCompany($user);
+        // return $this->isAdminOrManager($user) || $this->hasCompany($user);
     }
 
     /**
@@ -40,17 +39,18 @@ class ServicePolicy
      */
     public function update(User $user, Service $service): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Admins and managers can update all services
-        if ($this->isAdminOrManager($user)) {
-            return true;
-        }
+        // if ($this->isAdminOrManager($user)) {
+        //     return true;
+        // }
 
-        // Company owners can update services if they have professionals assigned to it
-        if ($this->hasCompany($user) && $this->hasAssignedProfessionals($user, $service)) {
-            return true;
-        }
+        // // Company owners can update services if they have professionals assigned to it
+        // if ($this->hasCompany($user) && $this->hasAssignedProfessionals($user, $service)) {
+        //     return true;
+        // }
 
-        return false;
+        // return false;
     }
 
     /**
@@ -58,9 +58,10 @@ class ServicePolicy
      */
     public function delete(User $user, Service $service): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Only admins can delete services
         // Cannot delete if service has assigned professionals
-        return $this->isAdmin($user) && $service->professionals()->count() === 0;
+        // return $this->isAdmin($user) && $service->professionals()->count() === 0;
     }
 
     /**
@@ -68,8 +69,9 @@ class ServicePolicy
      */
     public function restore(User $user, Service $service): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Admins and managers can restore services
-        return $this->isAdminOrManager($user);
+        // return $this->isAdminOrManager($user);
     }
 
     /**
@@ -77,8 +79,9 @@ class ServicePolicy
      */
     public function forceDelete(User $user, Service $service): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin']);
         // Only super admin can force delete
-        return $this->isSuperAdmin($user) && $service->professionals()->count() === 0;
+        // return $this->isSuperAdmin($user) && $service->professionals()->count() === 0;
     }
 
     /**

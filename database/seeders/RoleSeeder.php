@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -47,5 +48,33 @@ class RoleSeeder extends Seeder
                 $role
             );
         }
+
+        $super_admin_user = User::updateOrCreate([
+            'email' => 'super_admin@admin.com',
+        ], [
+            'name' => 'Super Admin',
+            'role_id' => Role::where('name', 'super_admin')->first()->id,
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]);
+
+        $admin_user = User::updateOrCreate([
+            'email' => 'admin@admin.com',
+        ], [
+            'name' => 'Admin',
+            'role_id' => Role::where('name', 'admin')->first()->id,
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]);
+
+        $moderator_user = User::updateOrCreate([
+            'email' => 'moderator@admin.com',
+        ], [
+            'name' => 'Moderator',
+            'role_id' => Role::where('name', 'moderator')->first()->id,
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]);
+
     }
 }

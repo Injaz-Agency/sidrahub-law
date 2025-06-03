@@ -13,8 +13,7 @@ class ProfessionalPolicy
      */
     public function viewAny(User $user): bool
     {
-        // All authenticated users can view professionals list
-        return true;
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -22,10 +21,11 @@ class ProfessionalPolicy
      */
     public function view(User $user, Professional $professional): bool
     {
+        return isset($user->role) && in_array($user->role->name, haystack: ['super_admin', 'admin', 'moderator']);
         // Users can view their own professional profile,
         // company owners can view their employees,
         // admins and managers can view all
-        return $this->canAccessProfessional($user, $professional);
+        // return $this->canAccessProfessional($user, $professional);
     }
 
     /**
@@ -33,8 +33,7 @@ class ProfessionalPolicy
      */
     public function create(User $user): bool
     {
-        // All authenticated users can create professional profiles
-        return true;
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
     }
 
     /**
@@ -42,22 +41,23 @@ class ProfessionalPolicy
      */
     public function update(User $user, Professional $professional): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Users can update their own professional profile
-        if ($user->id === $professional->user_id) {
-            return true;
-        }
+        // if ($user->id === $professional->user_id) {
+        //     return true;
+        // }
 
-        // Company owners can update their employees
-        if (
-            !$professional->freelancer &&
-            $professional->company &&
-            $user->id === $professional->company->user_id
-        ) {
-            return true;
-        }
+        // // Company owners can update their employees
+        // if (
+        //     !$professional->freelancer &&
+        //     $professional->company &&
+        //     $user->id === $professional->company->user_id
+        // ) {
+        //     return true;
+        // }
 
         // Admins and managers can update all professionals
-        return $this->isAdminOrManager($user);
+        // return $this->isAdminOrManager($user);
     }
 
     /**
@@ -65,22 +65,23 @@ class ProfessionalPolicy
      */
     public function delete(User $user, Professional $professional): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Users can delete their own professional profile
-        if ($user->id === $professional->user_id) {
-            return true;
-        }
+        // if ($user->id === $professional->user_id) {
+        //     return true;
+        // }
 
-        // Company owners can delete their employees
-        if (
-            !$professional->freelancer &&
-            $professional->company &&
-            $user->id === $professional->company->user_id
-        ) {
-            return true;
-        }
+        // // Company owners can delete their employees
+        // if (
+        //     !$professional->freelancer &&
+        //     $professional->company &&
+        //     $user->id === $professional->company->user_id
+        // ) {
+        //     return true;
+        // }
 
         // Only admins can delete other professionals
-        return $this->isAdmin($user);
+        // return $this->isAdmin($user);
     }
 
     /**
@@ -88,8 +89,9 @@ class ProfessionalPolicy
      */
     public function restore(User $user, Professional $professional): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin', 'moderator']);
         // Same logic as update
-        return $this->update($user, $professional);
+        // return $this->update($user, $professional);
     }
 
     /**
@@ -97,8 +99,9 @@ class ProfessionalPolicy
      */
     public function forceDelete(User $user, Professional $professional): bool
     {
+        return isset($user->role) && in_array($user->role->name, ['super_admin', 'admin']);
         // Only super admin can force delete
-        return $this->isSuperAdmin($user);
+        // return $this->isSuperAdmin($user);
     }
 
     /**

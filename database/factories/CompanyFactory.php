@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Country;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,17 @@ class CompanyFactory extends Factory
      */
     public function definition(): array
     {
+        // $imageUrl = "https://placehold.co/{$width}x{$height}/{$bgColor}/{$textColor}.png?text={$text}";
+
         return [
-            //
+            'user_id' => User::whereNull('role_id')->inRandomOrder()->first()->id,
+            'name_en' => fake()->company(),
+            'name_ar' => fake('ar_SA')->company(),
+            'registration_number' => fake()->unique()->randomNumber(9),
+            'address_en' => fake()->address(),
+            'address_ar' => fake('ar_SA')->address(),
+            'image' => fake()->imageUrl(),
+            'country_id' => Country::inRandomOrder()->first()->id,
         ];
     }
 }

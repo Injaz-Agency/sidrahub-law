@@ -61,12 +61,14 @@ class ProfessionalsRelationManager extends RelationManager
                     ->searchable()
                     ->sortable(),
 
-                Tables\Columns\BadgeColumn::make('type')
+                Tables\Columns\TextColumn::make('type')
                     ->label('Type')
-                    ->colors([
-                        'primary' => 'lawyer',
-                        'success' => 'accountant',
-                    ]),
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'lawyer' => 'primary',
+                        'accountant' => 'success',
+                        default => 'gray',
+                    }),
 
                 Tables\Columns\IconColumn::make('freelancer')
                     ->label('Freelancer')
