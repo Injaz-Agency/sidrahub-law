@@ -45,6 +45,21 @@ class ServiceResource extends Resource
                     ->required()
                     ->rows(4),
 
+                Forms\Components\FileUpload::make('icon')
+                    ->label('Service Icon')
+                    ->acceptedFileTypes(['image/svg+xml'])
+                    ->disk('public')
+                    ->directory('service-icons')
+                    ->previewable()
+                    ->downloadable()
+                    ->openable()
+                    ->helperText('Upload an SVG file for the service icon'),
+
+                Forms\Components\Toggle::make('is_active')
+                    ->label('Active')
+                    ->default(true)
+                    ->helperText('Toggle to activate/deactivate this service'),
+
                 Forms\Components\Select::make('country_id')
                     ->label('Country')
                     ->relationship('country', 'name_en')
@@ -73,6 +88,17 @@ class ServiceResource extends Resource
                     ->limit(50)
                     ->searchable(),
 
+                Tables\Columns\ImageColumn::make('icon')
+                    ->label('Icon')
+                    ->disk('public')
+                    ->size(40)
+                    ->square(),
+
+                Tables\Columns\IconColumn::make('is_active')
+                    ->label('Active')
+                    ->boolean()
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('country.name_en')
                     ->label('Country')
                     ->sortable(),
@@ -95,6 +121,12 @@ class ServiceResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('country')
                     ->relationship('country', 'name_en'),
+                Tables\Filters\TernaryFilter::make('is_active')
+                    ->label('Active Status')
+                    ->boolean()
+                    ->trueLabel('Active only')
+                    ->falseLabel('Inactive only')
+                    ->native(false),
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([

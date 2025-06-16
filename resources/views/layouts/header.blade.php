@@ -3,7 +3,7 @@
     <div class="container">
       <div class="relative flex items-center justify-between h-24">
 
-        <mobile-menu :services="{{ json_encode([]) }}" locale="{{ App::currentLocale() }}"></mobile-menu>
+        <mobile-menu :services="{{ json_encode($services) }}" locale="{{ App::currentLocale() }}"></mobile-menu>
 
         <div class="flex-1 flex items-center justify-end lg:justify-start">
           <div class="flex items-center">
@@ -22,8 +22,7 @@
                 class="nav-link h-full relative flex items-center justify-center text-main px-2 lg:px-5 py-2 text-sm lg:text-lg uppercase font-medium @if (Route::is('services.saudi')) active @endif">
                 @lang('Services')
               </a> --}}
-
-              <services-menu :services="{{ json_encode([]) }}" locale="{{ App::currentLocale() }}"></services-menu>
+              <services-menu :services="{{ json_encode(value: $services) }}" locale="{{ App::currentLocale() }}"></services-menu>
 
               <a href=""
                 class="nav-link h-full relative flex items-center justify-center text-main px-2 lg:px-5 py-2 text-sm lg:text-lg uppercase font-medium @if (Route::is('contact')) active @endif">

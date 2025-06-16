@@ -12,8 +12,8 @@
       </div>
     </div>
   </div>
-  </div>
 </section>
+
 <footer class="">
   <div class="container pt-10 lg:pt-16">
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-4">

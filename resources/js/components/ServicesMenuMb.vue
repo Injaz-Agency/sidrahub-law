@@ -1,8 +1,16 @@
 <template>
   <div class="relative">
-    <a :href="`/${locale}/new/services`" @click.prevent="isOpen = !isOpen" class="py-2 px-4 flex items-center justify-center text-lg font-medium text-main">
+    <a
+      :href="`/${locale}/new/services`"
+      @click.prevent="isOpen = !isOpen"
+      class="flex items-center justify-center px-4 py-2 text-lg font-medium text-main"
+    >
       {{ locale == 'ar' ? 'خدماتنا' : 'Services' }}
-      <svg class="w-4 h-4 fill-main group-hover:fill-second transition-colors duration-200 ease-in" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <svg
+        class="h-4 w-4 fill-main transition-colors duration-200 ease-in group-hover:fill-second"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
+      >
         <path
           d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
         />
@@ -15,22 +23,7 @@
         <ul class="divide-y divide-sh-border">
           <!-- :class="pathLink.includes('saudi') ? 'active' : ''" -->
 
-          <SubServicesMenuMb :locale="locale" :service="service" v-for="service in services" :key="service.id"  />
-
-<!--          <li>-->
-<!--            <a href class="py-2.5 px-4 flex items-center justify-center text-lg font-medium text-main">-->
-<!--              تكاليف شركتك بنسبة-->
-<!--              <svg-->
-<!--                class="w-4 h-4 fill-main group-hover:fill-second transition-colors duration-200 ease-in"-->
-<!--                xmlns="http://www.w3.org/2000/svg"-->
-<!--                viewBox="0 0 448 512"-->
-<!--              >-->
-<!--                <path-->
-<!--                  d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"-->
-<!--                />-->
-<!--              </svg>-->
-<!--            </a>-->
-<!--          </li>-->
+          <SubServicesMenuMb :locale="locale" :service="service" v-for="service in services" :key="service.id" />
         </ul>
       </div>
     </transition>
@@ -39,16 +32,16 @@
 
 <script>
 import SubServicesMenuMb from './SubServicesMenuMb.vue'
-import SubServicesMenu from "./SubServicesMenu.vue";
+import SubServicesMenu from './SubServicesMenu.vue'
 export default {
   props: {
     locale: {
       type: String,
     },
     services: {
-      type: [Object,Array],
-      required: true // Ensure that the prop is required
-    }
+      type: [Object, Array],
+      required: true, // Ensure that the prop is required
+    },
   },
   components: {
     SubServicesMenu,

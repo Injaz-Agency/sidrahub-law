@@ -3,11 +3,11 @@
     <div class="inline-flex">
       <a
         href="#"
-        class="nav-link h-full relative flex items-center justify-center text-main px-2 lg:px-5 py-2 text-sm lg:text-lg uppercase font-medium @if (Route::is('services.saudi')) active @endif"
+        class="nav-link relative flex h-full items-center justify-center px-2 py-2 text-sm font-medium text-main uppercase lg:px-5 lg:text-lg"
       >
         {{ locale == 'ar' ? 'خدماتنا' : 'Services' }}
         <svg
-          class="w-4 h-4 mx-2 fill-main group-hover:fill-second transition-colors duration-200 ease-in"
+          class="mx-2 h-4 w-4 fill-main transition-colors duration-200 ease-in group-hover:fill-second"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
         >
@@ -21,7 +21,7 @@
     <transition name="slide-up">
       <div
         v-show="isOpen"
-        class="absolute top-12 start-0 min-w-[270px] z-40 mt-2 bg-white border border-gray-200 rounded-md shadow-xl"
+        class="absolute start-0 top-12 z-40 mt-2 min-w-[270px] rounded-md border border-gray-200 bg-white shadow-xl"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="menu-button"
@@ -29,9 +29,23 @@
       >
         <ul class="py-2" role="none">
           <!-- :class="pathLink.includes('saudi') ? 'active' : ''" -->
-<!--          <SubServicesMenu :locale="locale" v-for="service in services" />-->
-          <SubServicesMenu :locale="locale" :service="service" v-for="service in services" :key="service.id" />
+          <!--          <SubServicesMenu :locale="locale" v-for="service in services" />-->
+          <!-- <SubServicesMenu :locale="locale" :service="service" v-for="service in services" :key="service.id" /> -->
 
+          <li class="relative" v-for="service in services" :key="service.id">
+            <a :href="`/${locale}/services`" class="group inline-flex w-full items-center justify-between px-4 py-2 text-main hover:text-second">
+              {{ locale == 'ar' ? service.title_ar : service.title_en }}
+              <svg
+                class="h-4 w-4 fill-main transition-colors duration-200 ease-in group-hover:fill-second"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                />
+              </svg>
+            </a>
+          </li>
         </ul>
       </div>
     </transition>
@@ -46,7 +60,7 @@ export default {
       type: String,
     },
     services: {
-      type: [Array,Object],
+      type: [Array, Object],
     },
   },
   components: {

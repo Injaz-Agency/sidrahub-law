@@ -27,171 +27,110 @@
 @endpush
 
 @section('content')
-  <section>
-    <div id="homeSlider" class="splide">
-      <div class="splide__track h-full">
-        <ul class="splide__list">
-          <li class="splide__slide">
-            <div class="relative flex flex-col-reverse flex-wrap lg:flex-row">
-              <div class="hero-border w-full py-8 lg:w-8/12 lg:py-28">
-                <div class="flex h-full flex-col justify-center space-y-6 px-4 lg:space-y-14 lg:ltr:pl-32 lg:rtl:pr-32">
-                  <h1 class="w-full text-2xl font-bold text-second md:text-6xl lg:w-11/12">@lang('Sidra platform for
-                                                                                                                                                                                                                                                                                                                                                                                                                                      business services')</h1>
+  <!-- Hero Section -->
+  <section class="relative max-h-11/12 h-11/12 overflow-hidden py-8 lg:py-16">
+    <!-- Background Elements -->
+    <img src="{{ asset('images/hero/img_group_1171276183.svg') }}" alt class="absolute bottom-0 left-10 w-44 z-10" />
+    <img src="{{ asset('images/hero/img_group_1171276181.svg') }}" alt class="absolute top-80 right-[745px] w-[430px] h-[430px] z-10" />
 
-                  <p class="w-full text-base md:text-3xl md:leading-relaxed lg:w-9/12">@lang('Combine all your financial,
-                                                                                                                                                                                                                                                                                                                                                                                                                                      legal, and PR services in one place and save on hiring costs')</p>
+    <!-- Hero Content -->
+    <div class="container relative z-20 flex flex-col lg:flex-row items-center lg:justify-between gap-12 lg:gap-0">
+      <!-- Left Side - Team Photo -->
+      <div class="w-full lg:w-7/12 flex flex-col space-y-6 lg:space-y-12">
+        <div class="relative">
+          {{-- text-[72px] font-medium leading-[134px] --}}
+          <h1 class="text-2xl lg:text-4xl xl:text-6xl font-medium leading-relaxed space-x-4">
+            <img class="inline w-14 lg:w-24" src="{{ asset('images/hero/img_33976575xuou07bx221020_1.svg') }}" alt />
+            <span class="inline text-main">استشارات قانونية</span>
+            <span class="inline text-second">متميزة لحماية حقوقك وتحقيق العدالة</span>
+          </h1>
+        </div>
 
-                  <div class="flex items-center space-x-4 lg:space-x-8 rtl:space-x-reverse">
-                    <a href=""
-                      class="flex min-w-[140px] items-center justify-center rounded-xl border-2 border-second bg-second px-8 py-3 text-base text-white lg:min-w-[180px]">@lang('Free
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Consultation')</a>
-                    <a href=""
-                      class="flex min-w-[140px] items-center justify-center rounded-xl border-2 border-main px-8 py-3 text-base text-main transition-all duration-150 ease-linear hover:border-second hover:bg-second hover:text-white lg:min-w-[180px]">@lang('Our
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  services')</a>
-                  </div>
-                </div>
+        <p class="w-full lg:w-9/12 lg:text-xl xl:text-3xl leading-relaxed">
+          فريقنا من المحامين المتخصصين يقدم لك استشارات قانونية دقيقة وشاملة لمساعدتك في اتخاذ القرارات القانونية الصحيحة وحماية مصالحك.
+        </p>
+
+        <div class="flex justify-between lg:justify-start gap-6">
+          <button class="flex items-center justify-center min-w-2/5 lg:min-w-48 xl:min-w-52 lg:text-2xl rounded-xl bg-second px-8 py-3 text-white">
+            اكتشف خدماتنا
+          </button>
+          <button
+            class="flex items-center justify-center min-w-2/5 lg:min-w-48 xl:min-w-52 lg:text-2xl rounded-xl bg-white text-second px-8 py-3 border border-second hover:bg-second hover:text-white transition-colors">
+            أنضم إلينا
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Side - Content -->
+      <div class="w-full lg:w-5/12 ">
+        <div class="relative">
+          <img src="{{ asset('images/hero/img_rectangle_41968.png') }}" alt="Legal Team" class="w-full shadow-image rounded-t-[397px]" />
+
+          <!-- Experience Badge -->
+          <div
+            class="absolute hidden xl:block min-w-60 top-9 left-2 bg-sh-border/50 backdrop-blur-sm border-1 border-white rounded-full px-7 py-3 shadow-[0_4px_40px_rgba(136,136,136,1)]">
+            <div class="flex items-center gap-4">
+              <div class="bg-sh-border/40 rounded-full w-20 h-20 flex items-center justify-center">
+                <img src="{{ asset('images/hero/img_group.svg') }}" alt="Experience" class="w-[51px] h-[44px]" />
               </div>
-
-              <div class="inset-y-0 end-0 -z-10 lg:absolute">
-                <img class="object-cover object-center lg:h-full" src="{{ asset('home-hero1.png') }}" alt="">
+              <div class="space-y-1">
+                <p class="text-xl text-white font-medium">الخبرة</p>
+                <p class="text-xl text-white font-medium">+12 سنة خبرة عمل</p>
               </div>
-
             </div>
-          </li>
-          <li class="splide__slide">
-            <div class="relative flex flex-col-reverse flex-wrap lg:flex-row">
-              <div class="hero-border w-full py-8 lg:w-8/12 lg:py-28">
-                <div class="flex h-full flex-col justify-center space-y-6 px-4 lg:space-y-14 lg:ltr:pl-32 lg:rtl:pr-32">
-                  <h1 class="w-full text-2xl font-bold text-second md:text-6xl lg:w-11/12">@lang('Sidra platform for
-                                                                                                                                                                                                                                                                                                                                                                                                                                      business services')</h1>
+          </div>
 
-                  <p class="w-full text-base md:text-3xl md:leading-relaxed lg:w-9/12">
-                    كل ما تحتاجه في مكان واحد ، بوابتك إلى التميز لتأسيس شركتك وتطوير أعمالك التجارية وتقديم الدعم الكامل
-                    لها.
-                  </p>
-
-                  <div class="flex items-center space-x-4 lg:space-x-8 rtl:space-x-reverse">
-                    <a href=""
-                      class="flex min-w-[140px] items-center justify-center rounded-xl border-2 border-second bg-second px-8 py-3 text-base text-white lg:min-w-[180px]">@lang('Free
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Consultation')</a>
-                    <a href=""
-                      class="flex min-w-[140px] items-center justify-center rounded-xl border-2 border-main px-8 py-3 text-base text-main transition-all duration-150 ease-linear hover:border-second hover:bg-second hover:text-white lg:min-w-[180px]">@lang('Our
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  services')</a>
-                  </div>
-                </div>
+          <!-- Success Badge -->
+          <div
+            class="absolute hidden xl:block min-w-60 bottom-9 -right-20 bg-sh-border/50 backdrop-blur-sm border-1 border-white rounded-full px-7 py-3 shadow-[0_4px_8px_rgba(136,136,136,1)]">
+            <div class="flex items-center gap-4">
+              <div class="relative w-20 h-20">
+                <img src="{{ asset('images/hero/img_ellipse_1762.svg') }}" alt class="w-full h-full" />
+                <img src="{{ asset('images/hero/img_prize.svg') }}" alt="Success" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12" />
               </div>
-
-              <div class="inset-y-0 end-0 -z-10 lg:absolute">
-                <img class="object-cover object-center lg:h-full" src="{{ asset('home-hero2.png') }}" alt="">
+              <div class="text-right">
+                <p class="text-xl text-white font-medium">نجاحنا</p>
+                <p class="text-xl text-white font-medium">نجاح وثقة من عملائنا</p>
               </div>
-
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
-
   </section>
 
   <section>
-    <div class="container pb-10 pt-24">
+    <div class="container pb-10 pt-12 lg:pt-24">
       <div class="mb-4 flex flex-col items-center justify-center">
-        <h2 class="relative pb-6 pt-8 text-center text-lg font-medium text-second md:text-5xl">@lang('Legal Specialties')
+        <h2 class="relative pb-6 pt-8 text-center text-2xl font-medium text-second md:text-5xl">@lang('Legal Specialties')
         </h2>
-        <p class="text-base font-semibold text-main md:text-3xl">@lang('Sidra Legal Services')</p>
+        <p class="text-xl font-semibold text-main md:text-3xl">@lang('Sidra Legal Services')</p>
       </div>
 
-      <div class="mt-16 grid grid-cols-1 gap-20 md:grid-cols-3">
-        <div class="flex flex-col items-center justify-center rounded-xl bg-sh-background px-20 py-12 text-center">
-          <span class="inline-flex">
-            <img class="h-32 w-32" src="{{ asset('images/icons/money.svg') }}" alt="">
-          </span>
+      <div class="mt-16 grid grid-cols-1 gap-10 lg:gap-20 md:grid-cols-3">
+        @foreach ($homeServices as $service)
+          <div class="flex flex-col items-center justify-center rounded-xl bg-sh-background shadow px-8 lg:px-20 py-12 text-center">
+            <span class="inline-flex">
+              <img class="h-24 w-24 lg:h-32 lg:w-32" src="{{ Storage::url($service->icon) }}" alt="">
+            </span>
 
-          <h3 class="my-10 text-lg font-bold text-main md:text-3xl">
-            الأحوال الشخصية
-          </h3>
+            <h3 class="my-6 lg:my-10 text-lg font-bold text-main md:text-3xl">
+              @if (App::currentLocale() == 'ar')
+                {{ $service->title_ar }}
+              @else
+                {{ $service->title_en }}
+              @endif
+            </h3>
 
-          <p class="text-lg font-medium md:leading-relaxed">
-            {{-- {{ str_limit($service->description, 130, '...') }} --}}
-            يختص بكافة القضايا الجنائية ابتداءً بقضايا السب والشتم والقذف والنصب والاحتيال مروراً بجرائم الابتزاز والسرقة
-            والاعتداء وصولاً إلى قضايا القتل والقصاص والدية.
-          </p>
-        </div>
-        <div class="flex flex-col items-center justify-center rounded-xl bg-sh-background px-20 py-12 text-center">
-          <span class="inline-flex">
-            <img class="h-32 w-32" src="{{ asset('images/icons/money.svg') }}" alt="">
-          </span>
-
-          <h3 class="my-10 text-lg font-bold text-main md:text-3xl">
-            الأحوال الشخصية
-          </h3>
-
-          <p class="text-lg font-medium md:leading-relaxed">
-            {{-- {{ str_limit($service->description, 130, '...') }} --}}
-            يختص بكافة القضايا الجنائية ابتداءً بقضايا السب والشتم والقذف والنصب والاحتيال مروراً بجرائم الابتزاز والسرقة
-            والاعتداء وصولاً إلى قضايا القتل والقصاص والدية.
-          </p>
-        </div>
-        <div class="flex flex-col items-center justify-center rounded-xl bg-sh-background px-20 py-12 text-center">
-          <span class="inline-flex">
-            <img class="h-32 w-32" src="{{ asset('images/icons/money.svg') }}" alt="">
-          </span>
-
-          <h3 class="my-10 text-lg font-bold text-main md:text-3xl">
-            الأحوال الشخصية
-          </h3>
-
-          <p class="text-lg font-medium md:leading-relaxed">
-            {{-- {{ str_limit($service->description, 130, '...') }} --}}
-            يختص بكافة القضايا الجنائية ابتداءً بقضايا السب والشتم والقذف والنصب والاحتيال مروراً بجرائم الابتزاز والسرقة
-            والاعتداء وصولاً إلى قضايا القتل والقصاص والدية.
-          </p>
-        </div>
-        <div class="flex flex-col items-center justify-center rounded-xl bg-sh-background px-20 py-12 text-center">
-          <span class="inline-flex">
-            <img class="h-32 w-32" src="{{ asset('images/icons/money.svg') }}" alt="">
-          </span>
-
-          <h3 class="my-10 text-lg font-bold text-main md:text-3xl">
-            الأحوال الشخصية
-          </h3>
-
-          <p class="text-lg font-medium md:leading-relaxed">
-            {{-- {{ str_limit($service->description, 130, '...') }} --}}
-            يختص بكافة القضايا الجنائية ابتداءً بقضايا السب والشتم والقذف والنصب والاحتيال مروراً بجرائم الابتزاز والسرقة
-            والاعتداء وصولاً إلى قضايا القتل والقصاص والدية.
-          </p>
-        </div>
-        <div class="flex flex-col items-center justify-center rounded-xl bg-sh-background px-20 py-12 text-center">
-          <span class="inline-flex">
-            <img class="h-32 w-32" src="{{ asset('images/icons/money.svg') }}" alt="">
-          </span>
-
-          <h3 class="my-10 text-lg font-bold text-main md:text-3xl">
-            الأحوال الشخصية
-          </h3>
-
-          <p class="text-lg font-medium md:leading-relaxed">
-            {{-- {{ str_limit($service->description, 130, '...') }} --}}
-            يختص بكافة القضايا الجنائية ابتداءً بقضايا السب والشتم والقذف والنصب والاحتيال مروراً بجرائم الابتزاز والسرقة
-            والاعتداء وصولاً إلى قضايا القتل والقصاص والدية.
-          </p>
-        </div>
-        <div class="flex flex-col items-center justify-center rounded-xl bg-sh-background px-20 py-12 text-center">
-          <span class="inline-flex">
-            <img class="h-32 w-32" src="{{ asset('images/icons/money.svg') }}" alt="">
-          </span>
-
-          <h3 class="my-10 text-lg font-bold text-main md:text-3xl">
-            الأحوال الشخصية
-          </h3>
-
-          <p class="text-lg font-medium md:leading-relaxed">
-            {{-- {{ str_limit($service->description, 130, '...') }} --}}
-            يختص بكافة القضايا الجنائية ابتداءً بقضايا السب والشتم والقذف والنصب والاحتيال مروراً بجرائم الابتزاز والسرقة
-            والاعتداء وصولاً إلى قضايا القتل والقصاص والدية.
-          </p>
-        </div>
+            <p class="text-base lg:text-lg font-medium md:leading-relaxed">
+              @if (App::currentLocale() == 'ar')
+                {{ Str::limit($service->description_ar, 130, '...') }}
+              @else
+                {{ Str::limit($service->description_en, 130, '...') }}
+              @endif
+            </p>
+          </div>
+        @endforeach
       </div>
     </div>
   </section>
@@ -199,20 +138,26 @@
   <section>
     <div class="container py-16">
       <div class="mb-4 flex flex-col items-center justify-center">
-        <h2 class="relative pb-6 pt-8 text-center text-lg font-medium text-second md:text-5xl">@lang('Sidra Lawyers')</h2>
-        <p class="text-base font-semibold text-main md:text-3xl">@lang('Lawyers of all specialties')</p>
+        <h2 class="relative pb-6 pt-8 text-center text-2xl font-medium text-second md:text-5xl">@lang('Sidra Lawyers')</h2>
+        <p class="text-xl font-semibold text-main md:text-3xl">@lang('Lawyers of all specialties')</p>
       </div>
 
       @include('frontend.partial.home-teams')
+
+      <div class="flex justify-center mt-14">
+        <a href="{{ route('lawyers') }}" class="flex items-center justify-center min-w-48 lg:min-w-52 lg:text-2xl rounded-xl bg-second px-8 py-3 text-white">
+          عرض الكل
+        </a>
+      </div>
     </div>
   </section>
 
   <section class="my-20 bg-sh-background">
     <div class="container py-8">
       <div class="mb-20 flex flex-col items-center justify-center">
-        <h2 class="relative pb-6 pt-8 text-center text-base font-medium text-second md:text-3xl">@lang('Customers
-                                                                                                                                                                                            Opinions')</h2>
-        <p class="text-lg font-bold text-main md:text-4xl">@lang('What our clients said about Sidra Lawyers')</p>
+        <h2 class="relative pb-6 pt-8 text-center text-2xl font-medium text-second md:text-3xl">@lang('Customers
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Opinions')</h2>
+        <p class="text-xl font-bold text-main md:text-4xl">@lang('What our clients said about Sidra Lawyers')</p>
       </div>
 
       <div id="testimonialSlider" class="splide">
@@ -315,17 +260,18 @@
       | Main Slider
       |--------------------------------------------------------------------------
       */
-      var homeSlider = new Splide("#homeSlider", {
-        direction: dir,
-        type: "loop",
-        rewind: true,
-        arrows: true,
-        autoplay: true,
-        pagination: false,
-        interval: 3000,
-      });
-      homeSlider.mount();
-
+      /*
+        var homeSlider = new Splide("#homeSlider", {
+          direction: dir,
+          type: "loop",
+          rewind: true,
+          arrows: true,
+          autoplay: true,
+          pagination: false,
+          interval: 3000,
+        });
+        homeSlider.mount();
+      */
       /*
         |--------------------------------------------------------------------------
         | team Slider

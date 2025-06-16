@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Professional;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -21,7 +23,10 @@ class SiteController extends Controller
      */
     public function home()
     {
-        return view('home');
+        $homeServices = Service::where('is_active', true)->whereNotNull('icon')->limit(6)->get();
+        // $professionals = Professional::where('is_active', true)->inRandomOrder()->limit(20)->get();
+        $professionals = Professional::inRandomOrder()->limit(20)->get();
+        return view('home', compact('homeServices', 'professionals'));
     }
 
     /**
@@ -29,6 +34,7 @@ class SiteController extends Controller
      */
     public function lawyers()
     {
-        return view('lawyers');
+        $professionals = Professional::inRandomOrder()->paginate(16);
+        return view('lawyers', compact('professionals'));
     }
 }

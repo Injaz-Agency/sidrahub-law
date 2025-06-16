@@ -16,6 +16,7 @@ class Professional extends Model
         'type',
         'freelancer',
         'company_id',
+        'image',
         'name_en',
         'name_ar',
         'job_title_en',

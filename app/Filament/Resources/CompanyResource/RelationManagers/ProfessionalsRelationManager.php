@@ -34,6 +34,21 @@ class ProfessionalsRelationManager extends RelationManager
                             ->required()
                             ->live(),
 
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Professional Image')
+                            ->image()
+                            ->disk('public')
+                            ->directory('professional-images')
+                            ->previewable()
+                            ->downloadable()
+                            ->openable()
+                            ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '1:1',
+                                '4:3',
+                            ])
+                            ->helperText('Upload a profile image for this professional'),
+
                         Forms\Components\TextInput::make('name_en')
                             ->label('Name (English)')
                             ->required()
@@ -136,6 +151,12 @@ class ProfessionalsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name_en')
             ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Image')
+                    ->disk('public')
+                    ->size(50)
+                    ->circular(),
+
                 Tables\Columns\TextColumn::make('name_en')
                     ->label('Name (EN)')
                     ->searchable()

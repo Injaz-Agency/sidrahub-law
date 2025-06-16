@@ -25,10 +25,11 @@ class ProfessionalFactory extends Factory
             'type' => fake()->randomElement(['lawyer', 'accountant']),
             'freelancer' => $freelancer,
             'company_id' => $freelancer ? null : Company::inRandomOrder()->first()->id,
+            'image' => null, // Will be filled through admin panel
             'name_en' => fake()->name(),
             'name_ar' => fake('ar_SA')->name(),
             'job_title_en' => fake()->jobTitle(),
-            'job_title_ar' => fake('ar_SA')->jobTitle(),
+            'job_title_ar' => fake('ar_SA')->realText(maxNbChars: 30),
             'description_en' => fake()->realText(maxNbChars: 100),
             'description_ar' => fake('ar_SA')->realText(100),
             'years_of_experience' => fake()->numberBetween(1, 10),

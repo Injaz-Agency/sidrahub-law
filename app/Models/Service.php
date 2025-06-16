@@ -16,7 +16,13 @@ class Service extends Model
         'title_ar',
         'description_en',
         'description_ar',
+        'icon',
+        'is_active',
         'country_id',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
     ];
 
     public function country()

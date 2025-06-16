@@ -51,6 +51,12 @@ class ProfessionalsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name_en')
             ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Image')
+                    ->disk('public')
+                    ->size(50)
+                    ->circular(),
+
                 Tables\Columns\TextColumn::make('name_en')
                     ->label('Name (EN)')
                     ->searchable()

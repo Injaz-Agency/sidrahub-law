@@ -40,6 +40,8 @@ class ServiceFactory extends Factory
             'title_ar' => $this->faker->randomElement($this->arabicServices),
             'description_en' => fake()->realText(30),
             'description_ar' => $arabicFaker->realText(maxNbChars: 200),
+            'icon' => null, // Will be filled through admin panel
+            'is_active' => fake()->boolean(80), // 80% chance to be active
             'country_id' => Country::inRandomOrder()->first()->id,
         ];
     }
