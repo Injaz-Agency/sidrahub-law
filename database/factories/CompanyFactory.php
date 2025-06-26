@@ -25,6 +25,10 @@ class CompanyFactory extends Factory
             'name_en' => fake()->company(),
             'name_ar' => fake('ar_SA')->company(),
             'registration_number' => fake()->unique()->randomNumber(9),
+            'legal_entity' => fake()->randomElement(['LLC', 'Corporation', 'Partnership', 'Sole Proprietorship']),
+            'license' => null, // Will be handled separately for file uploads
+            'about_ar' => fake('ar_SA')->realText(maxNbChars: 200),
+            'about_en' => fake()->realText(maxNbChars: 200),
             'address_en' => fake()->address(),
             'address_ar' => fake('ar_SA')->address(),
             'image' => fake()->imageUrl(),

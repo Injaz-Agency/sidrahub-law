@@ -32,7 +32,7 @@
 
 <script>
 import SubServicesMenuMb from './SubServicesMenuMb.vue'
-import SubServicesMenu from './SubServicesMenu.vue'
+// import SubServicesMenu from './SubServicesMenu.vue'
 export default {
   props: {
     locale: {
@@ -44,7 +44,7 @@ export default {
     },
   },
   components: {
-    SubServicesMenu,
+    // SubServicesMenu,
     SubServicesMenuMb,
   },
   data() {

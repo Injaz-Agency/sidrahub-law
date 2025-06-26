@@ -1,51 +1,5 @@
-@import "tailwindcss";
-@import "../../vendor/livewire/flux/dist/flux.css";
-
-@source '../views';
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
-@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
-    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
-
-    /* --font-montaga: "Montaga", "sans-serif";
-    --font-almarai: "Almarai", "sans-serif"; */
-
-    --color-zinc-50: #fafafa;
-    --color-zinc-100: #f5f5f5;
-    --color-zinc-200: #e5e5e5;
-    --color-zinc-300: #d4d4d4;
-    --color-zinc-400: #a3a3a3;
-    --color-zinc-500: #737373;
-    --color-zinc-600: #525252;
-    --color-zinc-700: #404040;
-    --color-zinc-800: #262626;
-    --color-zinc-900: #171717;
-    --color-zinc-950: #0a0a0a;
-
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
-    --color-accent-foreground: var(--color-white);
-    /*
-    --color-main: #051459;
-    --color-second: #ff8216;
-    --color-sh-border: #c6c6c6;
-    --color-dark-gary: #777777;
-    --color-sh-background: #f8f8f8; */
-}
-
-@layer theme {
-    .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
-    }
-}
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
 
 @layer base {
     *,
@@ -57,63 +11,49 @@
     }
 }
 
-[data-flux-field]:not(ui-radio, ui-checkbox) {
-    @apply grid gap-2;
-}
-
-[data-flux-label] {
-    @apply !mb-0 !leading-tight;
-}
-
-input:focus[data-flux-control],
-textarea:focus[data-flux-control],
-select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
-}
-
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
-
 @config "../../tailwind.config.js";
 
 body {
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
 }
 
 .head-lines::before {
-    @apply absolute content-[''] top-0 start-5 h-[1px] w-16 bg-main rounded-3xl;
+    @apply absolute start-5 top-0 h-[1px] w-16 rounded-3xl bg-main content-[''];
 }
 
 .head-lines::after {
-    @apply absolute content-[''] top-2 start-9 h-0.5 w-20 bg-second rounded-3xl;
+    @apply absolute start-9 top-2 h-0.5 w-20 rounded-3xl bg-second content-[''];
 }
 
 @media (min-width: 1024px) {
-    [dir="rtl"] .hero-border {
-        background: url("/hero-border_ar.svg") center center / cover;
+    [dir='rtl'] .hero-border {
+        background: url('/hero-border_ar.svg') center center / cover;
     }
 
-    [dir="ltr"] .hero-border {
-        background: url("/hero-border_en.svg") center center / cover;
+    [dir='ltr'] .hero-border {
+        background: url('/hero-border_en.svg') center center / cover;
     }
 }
 
 .pack-bg:hover {
     background: rgb(255, 130, 22);
-    background: linear-gradient(
-        160deg,
-        rgba(255, 130, 22, 1) 0%,
-        rgba(255, 184, 0, 1) 90%
-    );
+    background: linear-gradient(160deg, rgba(255, 130, 22, 1) 0%, rgba(255, 184, 0, 1) 90%);
 }
 
 .counter-bg {
-    background: url("/images/counter.jpg") center center / cover;
+    background: url('/images/counter.jpg') center center / cover;
 }
 
 @media (max-width: 1024px) {
     .counter-bg {
-        background: url("/images/counter.jpg") left center / cover;
+        background: url('/images/counter.jpg') left center / cover;
     }
+}
+
+.pagination-active {
+    @apply cursor-not-allowed border-second bg-second text-white;
+}
+
+.pagination-disabled-arrow {
+    @apply cursor-not-allowed border-second bg-second fill-white;
 }

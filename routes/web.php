@@ -30,5 +30,8 @@ Route::get('/', [Controllers\SiteController::class, 'default'])->name('default')
 
 Route::prefix('{locale}')->middleware('locale')->group(function () {
     Route::get('/home', [Controllers\SiteController::class, 'home'])->name('home');
-    Route::get('/lawyers', [Controllers\SiteController::class, 'lawyers'])->name('lawyers');
+    Route::get('/professionals', [Controllers\SiteController::class, 'professionals'])->name('professionals');
+    Route::get('/professionals/{professional}', [Controllers\SiteController::class, 'professionalShow'])->name('professionals.show');
+    Route::get('/lawyer_join', [Controllers\SiteController::class, 'lawyerJoin'])->name('lawyer.join');
+    Route::get('/legal_consultation', [Controllers\SiteController::class, 'legalConsultation'])->name('legal.consultation');
 });

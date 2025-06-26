@@ -47,6 +47,24 @@ class CompanyResource extends Resource
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
 
+                Forms\Components\TextInput::make('legal_entity')
+                    ->label('Legal Entity')
+                    ->maxLength(255),
+
+                Forms\Components\FileUpload::make('license')
+                    ->label('License Document')
+                    ->acceptedFileTypes(['application/pdf'])
+                    ->directory('companies/licenses')
+                    ->nullable(),
+
+                Forms\Components\Textarea::make('about_ar')
+                    ->label('About (Arabic)')
+                    ->rows(4),
+
+                Forms\Components\Textarea::make('about_en')
+                    ->label('About (English)')
+                    ->rows(4),
+
                 Forms\Components\Textarea::make('address_en')
                     ->label('Address (English)')
                     ->required()
@@ -69,6 +87,13 @@ class CompanyResource extends Resource
                     ->searchable()
                     ->preload()
                     ->required(),
+
+                Forms\Components\Select::make('services')
+                    ->label('Services')
+                    ->relationship('services', 'title_en')
+                    ->multiple()
+                    ->searchable()
+                    ->preload(),
             ]);
     }
 
@@ -101,6 +126,16 @@ class CompanyResource extends Resource
                 Tables\Columns\TextColumn::make('registration_number')
                     ->label('Registration #')
                     ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('legal_entity')
+                    ->label('Legal Entity')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('services_count')
+                    ->label('Services')
+                    ->counts('services')
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('professionals_count')

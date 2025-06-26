@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Professional;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -32,9 +33,37 @@ class SiteController extends Controller
     /**
      * Show the application lawyers page.
      */
-    public function lawyers()
+    public function professionals()
     {
-        $professionals = Professional::inRandomOrder()->paginate(16);
-        return view('lawyers', compact('professionals'));
+        $professionals = Professional::where('freelancer', false)->inRandomOrder()->paginate(16);
+        return view('professionals', compact('professionals'));
+    }
+
+    /**
+     * Show the application lawyer page.
+     */
+    public function professionalShow($locale, Professional $professional)
+    {
+        $professional->load('services', 'company');
+        $professionals = Professional::where('freelancer', false)->where('company_id', $professional->company_id)->inRandomOrder()->limit(10)->get();
+        return view('professional', compact('professional', 'professionals'));
+    }
+
+    /**
+     * Show the application join lawyers page.
+     */
+    public function lawyerJoin()
+    {
+        $services = Service::all();
+        $countries = Country::all();
+        return view('lawyer_join', compact('services', 'countries'));
+    }
+
+    /**
+     * Show the application join lawyers page.
+     */
+    public function legalConsultation()
+    {
+        return view('legal_consultation');
     }
 }

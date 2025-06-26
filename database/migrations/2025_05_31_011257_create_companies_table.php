@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->string('name_en');
             $table->string('name_ar');
             $table->string('registration_number')->unique()->nullable();
-            $table->text('address_en');
-            $table->text('address_ar');
+            $table->text('address_en')->nullable();
+            $table->text('address_ar')->nullable();
             $table->string('image')->nullable();
             $table->foreignId('country_id')->constrained('countries');
             $table->softDeletes();

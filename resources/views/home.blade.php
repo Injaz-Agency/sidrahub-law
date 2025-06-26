@@ -54,10 +54,10 @@
           <button class="flex items-center justify-center min-w-2/5 lg:min-w-48 xl:min-w-52 lg:text-2xl rounded-xl bg-second px-8 py-3 text-white">
             اكتشف خدماتنا
           </button>
-          <button
+          <a href="{{ route('lawyer.join') }}"
             class="flex items-center justify-center min-w-2/5 lg:min-w-48 xl:min-w-52 lg:text-2xl rounded-xl bg-white text-second px-8 py-3 border border-second hover:bg-second hover:text-white transition-colors">
             أنضم إلينا
-          </button>
+          </a>
         </div>
       </div>
 
@@ -98,7 +98,9 @@
       </div>
     </div>
   </section>
+  <!-- End Hero Section -->
 
+  <!-- Service Section -->
   <section>
     <div class="container pb-10 pt-12 lg:pt-24">
       <div class="mb-4 flex flex-col items-center justify-center">
@@ -107,14 +109,14 @@
         <p class="text-xl font-semibold text-main md:text-3xl">@lang('Sidra Legal Services')</p>
       </div>
 
-      <div class="mt-16 grid grid-cols-1 gap-10 lg:gap-20 md:grid-cols-3">
+      <div class="mt-16 grid grid-cols-1 gap-10 lg:gap-20 md:grid-cols-2 xl:grid-cols-3">
         @foreach ($homeServices as $service)
           <div class="flex flex-col items-center justify-center rounded-xl bg-sh-background shadow px-8 lg:px-20 py-12 text-center">
             <span class="inline-flex">
               <img class="h-24 w-24 lg:h-32 lg:w-32" src="{{ Storage::url($service->icon) }}" alt="">
             </span>
 
-            <h3 class="my-6 lg:my-10 text-lg font-bold text-main md:text-3xl">
+            <h3 class="my-6 lg:my-10 text-lg font-bold text-main md:text-2xl lg:text-3xl">
               @if (App::currentLocale() == 'ar')
                 {{ $service->title_ar }}
               @else
@@ -134,9 +136,11 @@
       </div>
     </div>
   </section>
+  <!-- End Service Section -->
 
+  <!-- Team Section -->
   <section>
-    <div class="container py-16">
+    <div class="container py-10 md:py-16">
       <div class="mb-4 flex flex-col items-center justify-center">
         <h2 class="relative pb-6 pt-8 text-center text-2xl font-medium text-second md:text-5xl">@lang('Sidra Lawyers')</h2>
         <p class="text-xl font-semibold text-main md:text-3xl">@lang('Lawyers of all specialties')</p>
@@ -145,18 +149,20 @@
       @include('frontend.partial.home-teams')
 
       <div class="flex justify-center mt-14">
-        <a href="{{ route('lawyers') }}" class="flex items-center justify-center min-w-48 lg:min-w-52 lg:text-2xl rounded-xl bg-second px-8 py-3 text-white">
+        <a href="{{ route('professionals') }}" class="flex items-center justify-center min-w-48 lg:min-w-52 lg:text-2xl rounded-xl bg-second px-8 py-3 text-white">
           عرض الكل
         </a>
       </div>
     </div>
   </section>
+  <!-- End Team Section -->
 
-  <section class="my-20 bg-sh-background">
-    <div class="container py-8">
+  <!-- Testimonial Section -->
+  <section class="my-10 md:my-20 bg-sh-background">
+    <div class="container py-4 md:py-8">
       <div class="mb-20 flex flex-col items-center justify-center">
         <h2 class="relative pb-6 pt-8 text-center text-2xl font-medium text-second md:text-3xl">@lang('Customers
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Opinions')</h2>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Opinions')</h2>
         <p class="text-xl font-bold text-main md:text-4xl">@lang('What our clients said about Sidra Lawyers')</p>
       </div>
 
@@ -165,7 +171,7 @@
           <ul class="splide__list">
             <li class="splide__slide">
               <div class="flex items-start gap-6">
-                <div class="flex-shrink-0 pe-10">
+                <div class="hidden md:block flex-shrink-0 md:pe-6 lg:pe-10">
                   <div class="relative rounded-full p-2">
                     <img src="{{ asset('avatar.png') }}" alt="عزام ال تركي" class="h-52 w-52 rounded-full object-cover p-2.5 outline outline-dashed outline-second" />
 
@@ -212,7 +218,7 @@
                 </div>
 
                 <div class="flex-1">
-                  <p class="text-base leading-loose md:text-[26px]">
+                  <p class="text-base leading-loose md:text-xl lg:text-3xl">
                     @if (app()->getLocale() == 'ar')
                       لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
                       كانت تصاميم مطبوعه لوريم ايبسوم هو نموذج افتراضي يوضع في
@@ -225,15 +231,15 @@
                   </p>
 
                   <div class="mt-8 space-y-3">
-                    <p class="text-lg font-semibold text-second md:text-3xl">عزام ال تركي</p>
-                    <p class="text-accent text-base font-medium md:text-2xl">محامي نقد</p>
+                    <p class="text-lg font-semibold text-second md:text-2xl lg:text-3xl">عزام ال تركي</p>
+                    <p class="text-accent text-base font-medium md:text-xl lg:text-2xl">محامي نقد</p>
                   </div>
 
                   <div class="absolute bottom-0 end-0 flex items-center justify-center">
                     @if (app()->getLocale() == 'ar')
-                      <img src="{{ asset('images/icons/quote_ar.svg') }}" alt="quote">
+                      <img class="h-16 w-16 md:w-20 md:h-20 lg:w-28 lg:h-28" src="{{ asset('images/icons/quote_ar.svg') }}" alt="quote">
                     @else
-                      <img src="{{ asset('images/icons/quote_en.svg') }}" alt="quote">
+                      <img class="h-16 w-16 md:w-20 md:h-20 lg:w-28 lg:h-28" src="{{ asset('images/icons/quote_en.svg') }}" alt="quote">
                     @endif
                   </div>
                 </div>
@@ -244,6 +250,7 @@
       </div>
     </div>
   </section>
+  <!-- End Testimonial Section -->
 @endsection
 
 @push('js-vendor')

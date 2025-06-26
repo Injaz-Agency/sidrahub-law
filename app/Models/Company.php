@@ -16,6 +16,10 @@ class Company extends Model
         'name_en',
         'name_ar',
         'registration_number',
+        'legal_entity',
+        'license',
+        'about_ar',
+        'about_en',
         'address_en',
         'address_ar',
         'image',
@@ -35,5 +39,10 @@ class Company extends Model
     public function professionals()
     {
         return $this->hasMany(Professional::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
     }
 }

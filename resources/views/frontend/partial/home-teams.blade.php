@@ -64,7 +64,8 @@
               @endif
             </p>
             <div class="py-4">
-              <a href="" class="inline-flex items-center justify-center border-b-2 border-second px-1 py-2 text-xl font-medium text-main">
+              <a href="{{ route('professionals.show', $professional->id) }}"
+                class="inline-flex items-center justify-center border-b-2 border-second px-1 py-2 text-xl font-medium text-main">
                 <span>@lang('Know him')</span>
                 @if (App::currentLocale() == 'ar')
                   <span class="mr-2 inline-flex h-4 w-4 fill-main md:h-6 md:w-6">

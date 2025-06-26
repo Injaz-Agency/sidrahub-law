@@ -34,4 +34,9 @@ class Service extends Model
     {
         return $this->belongsToMany(Professional::class, 'service_providers');
     }
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
+    }
 }
