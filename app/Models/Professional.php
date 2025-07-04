@@ -19,6 +19,7 @@ class Professional extends Model
         'image',
         'name_en',
         'name_ar',
+        'is_active',
         'job_title_en',
         'job_title_ar',
         'description_en',

@@ -57,6 +57,10 @@ class CompanyResource extends Resource
                     ->directory('companies/licenses')
                     ->nullable(),
 
+                Forms\Components\Toggle::make('is_active')
+                    ->label('Is Active')
+                    ->default(true),
+
                 Forms\Components\Textarea::make('about_ar')
                     ->label('About (Arabic)')
                     ->rows(4),
@@ -132,6 +136,10 @@ class CompanyResource extends Resource
                     ->label('Legal Entity')
                     ->searchable()
                     ->sortable(),
+
+                Tables\Columns\IconColumn::make('is_active')
+                    ->label('Active')
+                    ->boolean(),
 
                 Tables\Columns\TextColumn::make('services_count')
                     ->label('Services')

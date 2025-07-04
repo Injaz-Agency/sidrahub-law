@@ -18,6 +18,7 @@ class Company extends Model
         'registration_number',
         'legal_entity',
         'license',
+        'is_active',
         'about_ar',
         'about_en',
         'address_en',

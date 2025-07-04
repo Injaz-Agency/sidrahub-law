@@ -47,12 +47,23 @@
         </p>
       </div>
 
-      <form action="">
+      <form action="{{ route('lawyer.join.submit') }}" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 py-16">
           <div>
-            <label for="name_ar" class="text-sm lg:text-base">@lang('Full Name (Arabic)')</label>
+            <label for="name" class="text-sm lg:text-base">@lang('Owner Name')</label>
             <div class="mt-3">
-              <input id="name_ar" name="name_ar" required type="text" value="{{ old('name_ar') }}" placeholder="@lang('Full Name (Arabic)')"
+              <input id="name" name="name" type="text" value="{{ old('name') }}" placeholder="@lang('Owner Name')"
+                class="@error('name') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
+              @error('name')
+                <div class="text-red-600">{{ $message }}</div>
+              @enderror
+            </div>
+          </div>
+          <div>
+            <label for="name_ar" class="text-sm lg:text-base">@lang('Company Name (Arabic)')</label>
+            <div class="mt-3">
+              <input id="name_ar" name="name_ar" type="text" value="{{ old('name_ar') }}" placeholder="@lang('Company Name (Arabic)')"
                 class="@error('name_ar') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
               @error('name_ar')
                 <div class="text-red-600">{{ $message }}</div>
@@ -60,9 +71,9 @@
             </div>
           </div>
           <div>
-            <label for="name_en" class="text-sm lg:text-base">@lang('Full Name (English)')</label>
+            <label for="name_en" class="text-sm lg:text-base">@lang('Company Name (English)')</label>
             <div class="mt-3">
-              <input id="name_en" name="name_en" required type="text" value="{{ old('name_en') }}" placeholder="@lang('Full Name (English)')"
+              <input id="name_en" name="name_en" type="text" value="{{ old('name_en') }}" placeholder="@lang('Company Name (English)')"
                 class="@error('name_en') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
               @error('name_en')
                 <div class="text-red-600">{{ $message }}</div>
@@ -72,7 +83,7 @@
           <div>
             <label for="phone" class="text-sm lg:text-base">@lang('Phone')</label>
             <div class="mt-3">
-              <input id="phone" name="phone" required type="text" value="{{ old('phone') }}" placeholder="@lang('Phone')"
+              <input id="phone" name="phone" type="text" value="{{ old('phone') }}" placeholder="@lang('Phone')"
                 class="@error('phone') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
               @error('phone')
                 <div class="text-red-600">{{ $message }}</div>
@@ -82,7 +93,7 @@
           <div>
             <label for="email" class="text-sm lg:text-base">@lang('Email')</label>
             <div class="mt-3">
-              <input id="email" name="email" required type="email" autocomplete="email" value="{{ old('email') }}" placeholder="@lang('Email')"
+              <input id="email" name="email" type="email" autocomplete="email" value="{{ old('email') }}" placeholder="@lang('Email')"
                 class="@error('email') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
               @error('email')
                 <div class="text-red-600">{{ $message }}</div>
@@ -92,7 +103,7 @@
           <div>
             <label for="country_id" class="text-sm lg:text-base">@lang('Country')</label>
             <div class="mt-3">
-              <select name="country_id" id="country_id" required
+              <select name="country_id" id="country_id"
                 class="@error('country_id') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
                 <option value="">@lang('Select country')</option>
                 @foreach ($countries as $country)
@@ -108,7 +119,7 @@
           <div>
             <label for="logo" class="text-sm lg:text-base">@lang('Logo')</label>
             <div class="mt-3">
-              <input id="logo" name="logo" required type="file" value="{{ old('logo') }}" placeholder="@lang('Logo')"
+              <input id="logo" name="logo" type="file" value="{{ old('logo') }}" placeholder="@lang('Logo')"
                 class="@error('logo') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
               @error('logo')
                 <div class="text-red-600">{{ $message }}</div>
@@ -118,7 +129,7 @@
           <div>
             <label for="legal_entity" class="text-sm lg:text-base">@lang('Legal entity')</label>
             <div class="mt-3">
-              <select name="legal_entity" id="legal_entity" required
+              <select name="legal_entity" id="legal_entity"
                 class="@error('legal_entity') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
                 <option value="">@lang('Please select')</option>
                 <option value="individual_lawyer" {{ old('legal_entity') == 'individual_lawyer' ? 'selected' : '' }}>@lang('Individual lawyer')</option>
@@ -132,7 +143,7 @@
           <div>
             <label for="legal_specialization" class="text-sm lg:text-base">@lang('Legal specialization')</label>
             <div class="mt-3">
-              <select name="legal_specialization" id="legal_specialization" required
+              <select name="legal_specialization" id="legal_specialization"
                 class="@error('legal_specialization') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
                 <option value="">@lang('Please select')</option>
                 @foreach ($services as $service)
@@ -148,7 +159,7 @@
           <div>
             <label for="registration_number" class="text-sm lg:text-base">@lang('Registration number')</label>
             <div class="mt-3">
-              <input id="registration_number" name="registration_number" required type="text" value="{{ old('registration_number') }}" placeholder="@lang('Registration number')"
+              <input id="registration_number" name="registration_number" type="text" value="{{ old('registration_number') }}" placeholder="@lang('Registration number')"
                 class="@error('registration_number') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
               @error('registration_number')
                 <div class="text-red-600">{{ $message }}</div>
@@ -158,7 +169,7 @@
           <div>
             <label for="license" class="text-sm lg:text-base">@lang('License')</label>
             <div class="mt-3">
-              <input id="license" name="license" required type="file" value="{{ old('license') }}" placeholder="@lang('License')"
+              <input id="license" name="license" type="file" value="{{ old('license') }}" placeholder="@lang('License')"
                 class="@error('license') is-invalid @enderror w-full px-4 py-3 h-14 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary">
               @error('license')
                 <div class="text-red-600">{{ $message }}</div>
@@ -168,7 +179,7 @@
           <div class="lg:col-span-2">
             <label for="info" class="text-sm lg:text-base">@lang('Info')</label>
             <div class="mt-3">
-              <textarea id="info" name="info" required rows="4" value="{{ old('info') }}" placeholder="@lang('Info')"
+              <textarea id="info" name="info" rows="4" value="{{ old('info') }}" placeholder="@lang('Info')"
                 class="@error('info') is-invalid @enderror w-full px-4 py-3 text-sm lg:text-base transition duration-300 ease-in-out transform border border-sh-border rounded-lg text-dark-gary"></textarea>
               @error('info')
                 <div class="text-red-600">{{ $message }}</div>

@@ -27,6 +27,7 @@ class CompanyFactory extends Factory
             'registration_number' => fake()->unique()->randomNumber(9),
             'legal_entity' => fake()->randomElement(['LLC', 'Corporation', 'Partnership', 'Sole Proprietorship']),
             'license' => null, // Will be handled separately for file uploads
+            'is_active' => fake()->boolean(80), // 80% chance of being active
             'about_ar' => fake('ar_SA')->realText(maxNbChars: 200),
             'about_en' => fake()->realText(maxNbChars: 200),
             'address_en' => fake()->address(),

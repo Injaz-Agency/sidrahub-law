@@ -84,7 +84,6 @@
     "Welcome to Sidra, your trusted partner for unparalleled success in legal, financial and business establishment services.": "مرحبًا بك في سيدرا، شريكك الموثوق به لتحقيق نجاح لا مثيل له في الخدمات القانونية والمالية وخدمات تأسيس الأعمال.",
     "Join us with +1300 companies that trust us around the world": "انضم لنا مع +1300 شركة تثق بنا في جميع أنحاء العالم",
     "Dubai Free Zone": "المنطقة الحرة ,دبي",
-    "Dashbord": "لوحة التحكم",
     "Dashboard ": "لوحة التحكم",
     "Profile Settings": "إعدادات الملف الشخصي",
     "Joining date": "تاريخ الأنضمام",
@@ -142,5 +141,8 @@
     "Individual lawyer": "محامي فردي",
     "Law firm": "مكتب قانوني",
     "Select country": "اختر الدولة",
-    "Registration number": "رقم التسجيل"
+    "Owner Name": "اسم المالك",
+    "Registration number": "رقم التسجيل",
+    "Company Name (Arabic)": "اسم الشركة (عربي)",
+    "Company Name (English)": "اسم الشركة (انجليزي)"
 }

@@ -28,6 +28,7 @@ class ProfessionalFactory extends Factory
             'image' => null, // Will be filled through admin panel
             'name_en' => fake()->name(),
             'name_ar' => fake('ar_SA')->name(),
+            'is_active' => fake()->boolean(85), // 85% chance of being active
             'job_title_en' => fake()->jobTitle(),
             'job_title_ar' => fake('ar_SA')->realText(maxNbChars: 30),
             'description_en' => fake()->realText(maxNbChars: 100),

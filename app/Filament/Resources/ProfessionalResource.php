@@ -121,6 +121,16 @@ class ProfessionalResource extends Resource
                     ->preload()
                     ->required(),
 
+                // Forms\Components\FileUpload::make('license')
+                //     ->label('License Document')
+                //     ->acceptedFileTypes(['application/pdf'])
+                //     ->directory('professionals/licenses')
+                //     ->nullable(),
+
+                Forms\Components\Toggle::make('is_active')
+                    ->label('Is Active')
+                    ->default(true),
+
                 Forms\Components\Select::make('services')
                     ->label('Assigned Services')
                     ->multiple()
@@ -179,6 +189,10 @@ class ProfessionalResource extends Resource
                 Tables\Columns\TextColumn::make('years_of_experience')
                     ->label('Experience (Years)')
                     ->sortable(),
+
+                Tables\Columns\IconColumn::make('is_active')
+                    ->label('Active')
+                    ->boolean(),
 
                 Tables\Columns\TextColumn::make('services_count')
                     ->label('Services')

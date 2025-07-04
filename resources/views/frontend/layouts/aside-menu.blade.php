@@ -26,7 +26,7 @@
     </li>
   </ul>
 
-  <h3 class="px-6 text-xl font-semibold">@lang('Dashbord')</h3>
+  <h3 class="px-6 text-xl font-semibold">@lang('Dashboard')</h3>
 
   <ul class="py-4 px-6 space-y-4">
     <li>

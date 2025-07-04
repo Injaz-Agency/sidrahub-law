@@ -42,7 +42,8 @@
         </div>
 
         <div class="absolute inset-y-0 end-0 flex items-center pe-2 lg:static lg:inset-auto lg:ms-6 sm:pe-0">
-          <a href="{{ route('login') }}" title="@lang('Sign In')" class="hidden xl:flex items-center justify-center ms-3 py-3 px-4 text-base bg-second text-white rounded-xl">
+          <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" title="@lang('Sign In')"
+            class="hidden xl:flex items-center justify-center ms-3 py-3 px-4 text-base bg-second text-white rounded-xl">
             <svg class="w-4 h-4 fill-white me-2" xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
               <path d=" M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2
