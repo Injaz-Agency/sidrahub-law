@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers;
+use App\Livewire\CompanyAdmin\DashboardOverview;
+use App\Livewire\CompanyAdmin\ProfessionalsManagement;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -27,7 +29,9 @@ Route::prefix('{locale}')->middleware(['auth', 'locale'])->group(function () {
 Route::get('/', [Controllers\SiteController::class, 'default'])->name('default');
 
 Route::prefix('{locale}')->middleware('locale')->group(function () {
-    Route::get('/dashboard', [Controllers\SiteController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
+    // Route::get('/dashboard', [Controllers\SiteController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
+    Route::get('/dashboard', DashboardOverview::class)->name('dashboard')->middleware(['auth']);
+    Route::get('/company/professionals', ProfessionalsManagement::class)->name('company.professionals')->middleware(['auth']);
 
     Route::get('/home', [Controllers\SiteController::class, 'home'])->name('home');
     Route::get('/professionals', [Controllers\SiteController::class, 'professionals'])->name('professionals');

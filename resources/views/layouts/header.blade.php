@@ -7,14 +7,14 @@
 
         <div class="flex-1 flex items-center justify-end lg:justify-start">
           <div class="flex items-center">
-            <a href="{{ route('home') }}" title="@lang('Sidra Hub')">
+            <a href="{{ route('home', App::currentLocale()) }}" title="@lang('Sidra Hub')">
               <img class="w-36 lg:w-44 xl:w-64" src="{{ asset('images/logo.png') }}" alt="logo">
             </a>
           </div>
 
           <div class="flex-1 h-full hidden lg:block ltr:me-6 sm:me-6">
             <div class="h-full flex items-center justify-center">
-              <a href="{{ route('home') }}"
+              <a href="{{ route('home', App::currentLocale()) }}"
                 class="nav-link h-full relative flex items-center justify-center text-main px-2 lg:px-5 py-2 text-sm lg:text-lg uppercase font-medium @if (Route::is('home')) active @endif">
                 @lang('Home')
               </a>
