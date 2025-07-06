@@ -24,6 +24,16 @@
                             </svg>
                             {{ __('Dashboard') }}
                         </a>
+                        <a href="#company-profile"
+                            class="flex items-center px-4 py-3 text-main rounded-lg hover:bg-second hover:text-white transition-colors tab-link"
+                            data-tab="company-profile">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            {{ __('Company Profile') }}
+                        </a>
                         <a href="#professionals"
                             class="flex items-center px-4 py-3 text-main rounded-lg hover:bg-second hover:text-white transition-colors tab-link"
                             data-tab="professionals">
@@ -41,6 +51,11 @@
                 <!-- Dashboard Tab -->
                 <div id="dashboard-tab" class="tab-content">
                     @livewire('company-admin.dashboard-overview')
+                </div>
+
+                <!-- Company Profile Tab -->
+                <div id="company-profile-tab" class="tab-content hidden">
+                    @livewire('company-admin.company-profile')
                 </div>
 
                 <!-- Professionals Tab -->

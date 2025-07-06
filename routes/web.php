@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers;
+use App\Livewire\CompanyAdmin\CompanyProfile;
 use App\Livewire\CompanyAdmin\DashboardOverview;
 use App\Livewire\CompanyAdmin\ProfessionalsManagement;
 use App\Livewire\Settings\Appearance;
@@ -32,6 +33,7 @@ Route::prefix('{locale}')->middleware('locale')->group(function () {
     // Route::get('/dashboard', [Controllers\SiteController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
     Route::get('/dashboard', DashboardOverview::class)->name('dashboard')->middleware(['auth']);
     Route::get('/company/professionals', ProfessionalsManagement::class)->name('company.professionals')->middleware(['auth']);
+    Route::get('/company/profile', CompanyProfile::class)->name('company.profile')->middleware(['auth']);
 
     Route::get('/home', [Controllers\SiteController::class, 'home'])->name('home');
     Route::get('/professionals', [Controllers\SiteController::class, 'professionals'])->name('professionals');

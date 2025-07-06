@@ -20,7 +20,7 @@
           :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
       </flux:navlist.group>
     </flux:navlist>
-    </a>
+
 
     <flux:navlist variant="outline">
       <flux:navlist.group class="grid">
@@ -28,7 +28,14 @@
           :current="request()->routeIs('company.professionals')" wire:navigate>{{ __('Professionals') }}
         </flux:navlist.item>
       </flux:navlist.group>
+    </flux:navlist>
 
+    <flux:navlist variant="outline">
+      <flux:navlist.group class="grid">
+        <flux:navlist.item icon="scale" :href="route('company.profile', App::currentLocale())"
+          :current="request()->routeIs('company.profile')" wire:navigate>{{ __('Company Profile') }}
+        </flux:navlist.item>
+      </flux:navlist.group>
     </flux:navlist>
 
     <flux:spacer />
